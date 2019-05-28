@@ -1,0 +1,19 @@
+object Form7: TForm7
+  Left = 0
+  Top = 0
+  Caption = 'Form7'
+  ClientHeight = 767
+  ClientWidth = 1060
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnResize = FormResize
+  DesignerMasterStyle = 0
+  object TimerDraw: TTimer
+    Interval = 1
+    OnTimer = TimerDrawTimer
+    Left = 56
+    Top = 32
+  end
+end

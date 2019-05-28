@@ -1,0 +1,28 @@
+object Form24: TForm24
+  Left = 0
+  Top = 0
+  Camera = Camera1
+  Caption = 'Form24'
+  ClientHeight = 667
+  ClientWidth = 1024
+  UsingDesignCamera = False
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = Form3DCreate
+  OnKeyDown = Form3DKeyDown
+  OnMouseWheel = Form3DMouseWheel
+  DesignerMasterStyle = 0
+  object Camera1: TCamera
+    AngleOfView = 45.000000000000000000
+    Position.Z = -10.000000000000000000
+    Width = 1.000000000000000000
+    Height = 1.000000000000000000
+    Depth = 1.000000000000000000
+  end
+  object Timer1: TTimer
+    Interval = 1
+    Left = 392
+    Top = 216
+  end
+end

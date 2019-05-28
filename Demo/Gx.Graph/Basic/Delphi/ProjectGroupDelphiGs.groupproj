@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{A1CDCD50-2021-4416-94FA-82200620908B}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="FMX\BasicgxGraphDemoFMX.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="VCL\BasicgxGraphDemoVCL.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="BasicgxGraphDemoFMX">
+        <MSBuild Projects="FMX\BasicgxGraphDemoFMX.dproj"/>
+    </Target>
+    <Target Name="BasicgxGraphDemoFMX:Clean">
+        <MSBuild Projects="FMX\BasicgxGraphDemoFMX.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BasicgxGraphDemoFMX:Make">
+        <MSBuild Projects="FMX\BasicgxGraphDemoFMX.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="BasicgxGraphDemoVCL">
+        <MSBuild Projects="VCL\BasicgxGraphDemoVCL.dproj"/>
+    </Target>
+    <Target Name="BasicgxGraphDemoVCL:Clean">
+        <MSBuild Projects="VCL\BasicgxGraphDemoVCL.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BasicgxGraphDemoVCL:Make">
+        <MSBuild Projects="VCL\BasicgxGraphDemoVCL.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="BasicgxGraphDemoFMX;BasicgxGraphDemoVCL"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="BasicgxGraphDemoFMX:Clean;BasicgxGraphDemoVCL:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="BasicgxGraphDemoFMX:Make;BasicgxGraphDemoVCL:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
