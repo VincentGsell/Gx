@@ -12,6 +12,15 @@ TeRect = record
   top,left,right,bottom : single;
 end;
 
+TeQuad = record
+  topleft,
+  topRight,
+  bottomRight,
+  bottomLeft : TPt2f;
+
+  procedure Build(tl_x,tl_y,tr_x,tr_y,br_x,br_y,bl_x,bl_y : single);
+end;
+
 TeBox = record
   left,top,near : single;
   right,bottom,far : single;
@@ -51,13 +60,11 @@ procedure TeRawMesh.GenerateSquareMesh(const xy, x2y2: TPt;
   const Thikness: Single;const Up : Boolean);
 var l : TDirectionalObject;
     a,b,c,d : TPt;
-    m : Single;
     idx : Uint32;
 begin
   l := TDirectionalObject.Create(xy.x,xy.y,Thikness/2);
   try
     l.LookAt(x2y2);
-    m := l.Angle;
 
     a := l.Origin;
     b := x2y2;
@@ -101,6 +108,16 @@ begin
     l.Free;
   end;
 
+end;
+
+{ TeQuad }
+
+procedure TeQuad.Build(tl_x, tl_y, tr_x, tr_y, br_x, br_y, bl_x, bl_y: single);
+begin
+  topleft := Point2f(tl_x,tl_y);
+  topRight := Point2f(tr_x,tr_y);
+  bottomRight := Point2f(br_x,br_y);
+  bottomLeft := Point2f(bl_x,bl_y);
 end;
 
 end.
