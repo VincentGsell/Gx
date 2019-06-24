@@ -406,8 +406,8 @@ var
 begin
   if not HitTest then
     Exit;
-
   LocalInput := InPuData;
+
   if Self is TGxGraphShapeItem then
   begin
     P := Point(LocalInput.MouseX,LocalInput.MouseY,0);

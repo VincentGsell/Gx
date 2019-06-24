@@ -67,3 +67,5 @@ __recovery/
 
 # Boss dependency manager vendor folder https://github.com/HashLoad/boss
 modules/
+Demo/Gx.Graph/Basic/Delphi/FMX/BasicgxGraphDemoFMX.deployproj
+Demo/Gx.Graph/Basic/Delphi/FMX/AndroidManifest.template.xml
