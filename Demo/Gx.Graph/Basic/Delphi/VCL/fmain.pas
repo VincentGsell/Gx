@@ -111,14 +111,14 @@ begin
   TGxGrid(lo).Radius := 150;
   TGxGrid(lo).Step := 10;
 
-//  Application.OnIdle := MyAppIdle;
+  Application.OnIdle := MyAppIdle;
 
 
 end;
 
 procedure TForm8.MyAppIdle(sender: TObject; var Done: Boolean);
 begin
-  TGxGrid(lo).Angle :=   TGxGrid(lo).Angle + 1;
+//  TGxGrid(lo).Angle :=   TGxGrid(lo).Angle + 1;
 
   graph.Repaint;
   Done := False;
