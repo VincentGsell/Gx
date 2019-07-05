@@ -8,6 +8,11 @@ uses
   GS.Direction;
 
 Type
+
+TP2f = Record
+  X,Y : Single;
+end;
+
 TeRect = record
   top,left,right,bottom : single;
 end;
