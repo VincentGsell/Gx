@@ -4,7 +4,7 @@ interface
 
 Uses SysUtils, Classes,
      Generics.Collections,
-     GS.Direction;
+     GS.Geometry.Direction;
 
 Type
   TOnGxChangePositionTracking = procedure (Sender: TObject; var X, Y: Single) of object;
@@ -238,8 +238,8 @@ Type
     procedure SetFillType(aFillType : TGxRendererFillType); virtual; abstract;
 
 
-    Procedure Ellipse(aRect : GS.Direction.TRct); virtual; abstract;
-    Procedure Rectangle(aRect : GS.Direction.TRct); virtual; Abstract;
+    Procedure Ellipse(aRect : GS.Geometry.Direction.TRct); virtual; abstract;
+    Procedure Rectangle(aRect : GS.Geometry.Direction.TRct); virtual; Abstract;
     procedure Polygone(aCoord : array of TPt); virtual; abstract;
     Procedure Line(a,b : TPt); Virtual; Abstract;
   end;
@@ -743,8 +743,7 @@ begin
 end;
 
 procedure TGxSelectionGrid.Draw(aRenderer: TCustomGxRenderer);
-var i : integer;
-    ls : Single;
+var ls : Single;
     ll : Single;
     b1,b2 : Single;
     RealBoundBoxA, RealBoundBoxB : Single;

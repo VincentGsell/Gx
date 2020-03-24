@@ -3,7 +3,7 @@ unit Gx.GraphBoard.FMX;
 interface
 
 Uses Gx.GraphBoard, Gx.Graph.Core,
-     GS.Direction,
+     GS.Geometry.Direction,
      System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
      System.Generics.Collections, FMX.Types, FMX.Controls, FMX.Forms,
      FMX.Graphics, FMX.Dialogs, FMX.Objects, System.Math.Vectors;
@@ -25,10 +25,10 @@ type
     Procedure SetFillColor(aRed, aGreen, aBlue  : Byte; Const aAlpha : Byte = 255); override;
     procedure SetFillType(aFillType : TGxRendererFillType); override;
 
-    Procedure Ellipse(aRect : GS.Direction.TRct); Override;
-    Procedure Rectangle(aRect : GS.Direction.TRct); Override;
-    procedure Polygone(aCoord : array of GS.Direction.TPt); Override;
-    Procedure Line(a,b : GS.Direction.TPt); override;
+    Procedure Ellipse(aRect : GS.Geometry.Direction.TRct); Override;
+    Procedure Rectangle(aRect : GS.Geometry.Direction.TRct); Override;
+    procedure Polygone(aCoord : array of GS.Geometry.Direction.TPt); Override;
+    Procedure Line(a,b : GS.Geometry.Direction.TPt); override;
 
     Property Canvas : TCanvas read FCanvas Write FCanvas;
   end;
@@ -39,7 +39,7 @@ type
     FRenderBackground : Boolean;
   public
     Parent : TgxFMXGraphBoardControl;
-    function GetDisplaySize : GS.Direction.TPt; override;
+    function GetDisplaySize : GS.Geometry.Direction.TPt; override;
 
     constructor Create; Override;
 
@@ -69,13 +69,13 @@ type
     property Board : TgxFMX2DGraphBoard read FInternalBoard;
   end;
 
-Procedure gxArrayOfPointToPolygon(var anArray : array of GS.Direction.TPt; Var aPoly : TPolygon);
+Procedure gxArrayOfPointToPolygon(var anArray : array of GS.Geometry.Direction.TPt; Var aPoly : TPolygon);
 
 implementation
 
 { TgxFMXRenderer }
 
-Procedure gxArrayOfPointToPolygon(var anArray : array of GS.Direction.TPt; Var aPoly : TPolygon);
+Procedure gxArrayOfPointToPolygon(var anArray : array of GS.Geometry.Direction.TPt; Var aPoly : TPolygon);
 var i : Integer;
 begin
   SetLength(aPoly,Length(anArray));
@@ -93,7 +93,7 @@ begin
   //Not used in FMX2d.
 end;
 
-procedure TgxFMXRenderer.Ellipse(aRect: GS.Direction.TRct);
+procedure TgxFMXRenderer.Ellipse(aRect: GS.Geometry.Direction.TRct);
 begin
   if FCanvas.Fill.Kind = TBrushKind.Solid then
   begin
@@ -111,12 +111,12 @@ begin
   //Not used in FMX2d.
 end;
 
-procedure TgxFMXRenderer.Line(a, b: GS.Direction.TPt);
+procedure TgxFMXRenderer.Line(a, b: GS.Geometry.Direction.TPt);
 begin
   FCanvas.DrawLine(PointF(a.X,a.Y),PointF(b.X,b.Y),1.0);
 end;
 
-procedure TgxFMXRenderer.Polygone(aCoord: array of GS.Direction.TPt);
+procedure TgxFMXRenderer.Polygone(aCoord: array of GS.Geometry.Direction.TPt);
 var ld : TPolygon;
 begin
   gxArrayOfPointToPolygon(aCoord,ld);
@@ -130,7 +130,7 @@ begin
   end;
 end;
 
-procedure TgxFMXRenderer.Rectangle(aRect: GS.Direction.TRct);
+procedure TgxFMXRenderer.Rectangle(aRect: GS.Geometry.Direction.TRct);
 begin
   if FCanvas.Fill.Kind = TBrushKind.Solid then
   begin
@@ -264,6 +264,8 @@ begin
     ls := ls + [MiddleButton];
 
   FInternalBoard.MouseMoveProcess(X,Y,ls);
+
+  Repaint;
 end;
 
 procedure TgxFMXGraphBoardControl.MouseUp(Button: TMouseButton;
@@ -319,9 +321,9 @@ begin
   FRenderBackground := true;
 end;
 
-function TgxFMX2DGraphBoard.GetDisplaySize: GS.Direction.TPt;
+function TgxFMX2DGraphBoard.GetDisplaySize: GS.Geometry.Direction.TPt;
 begin
-  Result := GS.Direction.Point(Parent.Width, Parent.Height);
+  Result := GS.Geometry.Direction.Point(Parent.Width, Parent.Height);
 end;
 
 procedure TgxFMX2DGraphBoard.Render;
@@ -331,7 +333,7 @@ begin
     Renderer.SetFillColor($AD,$D8,$E6);   //Light blue. $ADD8E6
     Renderer.SetStrokeColor($FF,$FF,$FF); //White.
     Renderer.SetFillType(TGxRendererFillType.SolidColor);
-    Renderer.Rectangle(GS.Direction.Rect(0,0,GetDisplaySize.x, GetDisplaySize.y));
+    Renderer.Rectangle(GS.Geometry.Direction.Rect(0,0,GetDisplaySize.x, GetDisplaySize.y));
   end;
   inherited Render;
 end;

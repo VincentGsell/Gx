@@ -6,7 +6,7 @@ Uses System.SysUtils,
      Gx.Graph.Mesh.Geometry,
      gx.Graph.core,
      gx.Graph.Controls,
-     gs.Direction;
+     GS.Geometry.Direction;
 
 type
   TCustomGraphMeshShape = class(TgxCustomEditableItemCenterAndSizeRotate)

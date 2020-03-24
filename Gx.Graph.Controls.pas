@@ -2,7 +2,7 @@ unit Gx.Graph.Controls;
 
 interface
 
-uses GS.Direction, Gx.Graph.Core, SysUtils;
+uses GS.Geometry.Direction, Gx.Graph.Core, SysUtils;
 
 Const
   CST_TRANSFORMATION_REQUIRED_PARENTCONTROL = 'Transformation required a parent control';
@@ -244,7 +244,7 @@ begin
   inherited;
   aRenderer.SetStrokeSize(1);
   aRenderer.SetStrokeDashType(TGxRenderDashType.dash);
-  aRenderer.Line(GS.Direction.Point(FCenterForDraw.X,FCenterForDraw.Y),GS.Direction.Point(FAngleForDraw.X,FAngleForDraw.Y));
+  aRenderer.Line(GS.Geometry.Direction.Point(FCenterForDraw.X,FCenterForDraw.Y),GS.Geometry.Direction.Point(FAngleForDraw.X,FAngleForDraw.Y));
   aRenderer.SetStrokeDashType(TGxRenderDashType.continous);
 
 
@@ -253,10 +253,10 @@ begin
     InternalEditorSetup;
 
     aRenderer.SetStrokeDashType(TGxRenderDashType.dashdot);
-    aRenderer.Line(GS.Direction.Point(FCenterForDraw.X,FCenterForDraw.Y),GS.Direction.Point(FEditorSelectPointRadius.PositionX,FEditorSelectPointRadius.PositionY));
+    aRenderer.Line(GS.Geometry.Direction.Point(FCenterForDraw.X,FCenterForDraw.Y),GS.Geometry.Direction.Point(FEditorSelectPointRadius.PositionX,FEditorSelectPointRadius.PositionY));
 
     aRenderer.SetStrokeDashType(TGxRenderDashType.dash);
-    aRenderer.Line(GS.Direction.Point(FCenterForDraw.X,FCenterForDraw.Y),GS.Direction.Point(FEditorSelectPointRotate.PositionX,FEditorSelectPointRotate.PositionY));
+    aRenderer.Line(GS.Geometry.Direction.Point(FCenterForDraw.X,FCenterForDraw.Y),GS.Geometry.Direction.Point(FEditorSelectPointRotate.PositionX,FEditorSelectPointRotate.PositionY));
 
    // aRenderer.SetStrokeDashType(TGxRenderDashType.continous);
     FEditorSelectPointRadius.Draw(aRenderer);

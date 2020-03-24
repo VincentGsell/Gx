@@ -2,7 +2,7 @@ unit Gx.GraphBoard;
 
 interface
 
-uses GS.Direction,
+uses GS.Geometry.Direction,
      Gx.Graph.Core,
      Gx.Graph.Controls;
 

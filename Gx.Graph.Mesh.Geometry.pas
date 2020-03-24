@@ -2,7 +2,7 @@ unit Gx.Graph.Mesh.Geometry;
 
 Interface
 
-uses gx.Graph.core, System.SysUtils, gs.Direction;
+uses gx.Graph.core, System.SysUtils, GS.Geometry.Direction;
 
 Type
 
