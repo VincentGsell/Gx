@@ -93,7 +93,7 @@ End;
 
 implementation
 
-Uses Clipper;
+Uses Clipper, ClipperCore;
 
 { TGxMeshDiskGenerator }
 
@@ -307,7 +307,7 @@ begin
   c := TClipper.Create;
   c.AddPaths(a,ptSubject,true);
   c.AddPaths(b,ptClip,true);
-  c.Execute(ctDifference,r,pftNonZero,pftNonZero);
+  c.Execute(ctDifference,TFillRule.frNonZero,r);
 
   aData.SetCapacity(LEngth(r[0]));
   for I := Low(r[0]) to High(r[0]) do

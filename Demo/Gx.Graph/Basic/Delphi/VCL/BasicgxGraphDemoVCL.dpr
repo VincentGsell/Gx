@@ -8,8 +8,6 @@ uses
   Gx.Graph.Mesh.Controls in '..\..\..\..\..\Gx.Graph.Mesh.Controls.pas',
   Gx.Graph.Mesh.Geometry in '..\..\..\..\..\Gx.Graph.Mesh.Geometry.pas',
   Gx.GraphBoard in '..\..\..\..\..\Gx.GraphBoard.pas',
-  GS.Direction in '..\..\..\..\..\..\GS\GS.Core\GS.Direction.pas',
-  clipper in '..\..\..\..\..\ThirdPart\clipper.pas',
   Gx.GraphBoard.VCL in '..\..\..\..\..\Gx.GraphBoard.VCL.pas';
 
 {$R *.res}

@@ -3,7 +3,7 @@ unit Gx.GraphBoard.VCL;
 interface
 
 Uses Gx.GraphBoard, Gx.Graph.Core,
-     GS.Direction,
+     GS.Geometry.Direction,
      System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
      System.Generics.Collections, System.Math.Vectors,
      VCL.Graphics, VCL.Controls;
@@ -22,10 +22,10 @@ type
     Procedure SetFillColor(aRed, aGreen, aBlue  : Byte; Const aAlpha : Byte = 255); override;
     procedure SetFillType(aFillType : TGxRendererFillType); override;
 
-    Procedure Ellipse(aRect : GS.Direction.TRct); Override;
-    Procedure Rectangle(aRect : GS.Direction.TRct); Override;
-    procedure Polygone(aCoord : array of GS.Direction.TPt); Override;
-    Procedure Line(a,b : GS.Direction.TPt); override;
+    Procedure Ellipse(aRect : GS.Geometry.Direction.TRct); Override;
+    Procedure Rectangle(aRect : GS.Geometry.Direction.TRct); Override;
+    procedure Polygone(aCoord : array of GS.Geometry.Direction.TPt); Override;
+    Procedure Line(a,b : GS.Geometry.Direction.TPt); override;
 
 
     Property Canvas : TCanvas read FCanvas Write FCanvas;
@@ -36,7 +36,7 @@ type
   protected
   public
     Parent : TgxVCLGraphBoardControl;
-    function GetDisplaySize : GS.Direction.TPt; override;
+    function GetDisplaySize : GS.Geometry.Direction.TPt; override;
   end;
 
   //Pure VCL Control descendant.
@@ -71,7 +71,7 @@ implementation
 { TgxVCLRenderer }
 
 
-procedure TgxVCLRenderer.Ellipse(aRect: GS.Direction.TRct);
+procedure TgxVCLRenderer.Ellipse(aRect: GS.Geometry.Direction.TRct);
 begin
 //  if FCanvas.Fill.Kind = TBrushKind.Solid then
 //  begin
@@ -84,7 +84,7 @@ begin
   FCanvas.Ellipse(Rect(Round(aRect.Left),Round(aRect.Top),Round(aRect.Right),Round(aRect.Bottom)));
 end;
 
-Procedure gxArrayOfPointToPolygon(var anArray : array of GS.Direction.TPt; Var aPoly : TPolygon);
+Procedure gxArrayOfPointToPolygon(var anArray : array of GS.Geometry.Direction.TPt; Var aPoly : TPolygon);
 var i : Integer;
 begin
   SetLength(aPoly,Length(anArray));
@@ -96,14 +96,14 @@ begin
 end;
 
 
-procedure TgxVCLRenderer.Line(a, b: GS.Direction.TPt);
+procedure TgxVCLRenderer.Line(a, b: GS.Geometry.Direction.TPt);
 begin
 //  FCanvas.DrawLine(PointF(a.X,a.Y),PointF(b.X,b.Y),1.0);
   FCanvas.MoveTo(Round(a.X),Round(a.Y));
   FCanvas.LineTo(Round(b.X),Round(b.Y));
 end;
 
-procedure TgxVCLRenderer.Polygone(aCoord: array of GS.Direction.TPt);
+procedure TgxVCLRenderer.Polygone(aCoord: array of GS.Geometry.Direction.TPt);
 var larr : Array of TPoint;
     i : integer;
 begin
@@ -126,7 +126,7 @@ begin
   FCanvas.Polygon(larr);
 end;
 
-procedure TgxVCLRenderer.Rectangle(aRect: GS.Direction.TRct);
+procedure TgxVCLRenderer.Rectangle(aRect: GS.Geometry.Direction.TRct);
 begin
 //  if FCanvas.Fill.Kind = TBrushKind.Solid then
 //  begin
@@ -312,9 +312,9 @@ end;
 { TgxVCLGraphBoard }
 
 
-function TgxVCLGraphBoard.GetDisplaySize: GS.Direction.TPt;
+function TgxVCLGraphBoard.GetDisplaySize: GS.Geometry.Direction.TPt;
 begin
-  Result := GS.Direction.Point(Parent.Width, Parent.Height);
+  Result := GS.Geometry.Direction.Point(Parent.Width, Parent.Height);
 end;
 
 end.

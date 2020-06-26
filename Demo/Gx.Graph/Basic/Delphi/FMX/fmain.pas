@@ -5,7 +5,8 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
-  Gx.GraphBoard.FMX, GS.Direction,
+  GS.Geometry.Direction,
+  Gx.GraphBoard.FMX,
   Gx.Graph.Core,
   Gx.Graph.Controls,      //Classic light control.
   Gx.Graph.Mesh.Controls; //Mesh oriented control
@@ -125,7 +126,7 @@ begin
     BackGroundGrid.Width := ClientWidth;
     BackGroundGrid.Height := ClientHeight;
 
-    graph.Board.GlobalTransformationCenter := GS.Direction.Point(ClientWidth/2,ClientHeight/2);
+    graph.Board.GlobalTransformationCenter := GS.Geometry.Direction.Point(ClientWidth/2,ClientHeight/2);
   end;
 end;
 
